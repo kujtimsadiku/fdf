@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:27:32 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/26 23:52:29 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/28 13:46:00 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ int	rgb_color(double r, double g, double b)
 	return (color);
 }
 
-void	gap(t_data *data)
+void	init(t_data *data)
 {
-	data->gap = 10;
-	data->offset = 30;
+	data->gap = 30;
+	data->offset = 50;
 	data->elev = 0;
 	data->color = 0xFFFFFF;
 	data->geo = 2;
 	data->geo2 = 6;
-	data->trg = 0;
-	data->rotate = 1;
-	data->rotate2 = 1;
+	data->trg = 1;
+	data->rotate_x = 1;
+	data->rotate_y = 1;
+	data->d = 0;
 }
