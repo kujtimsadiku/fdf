@@ -1,5 +1,6 @@
 CC = arch -x86_64 cc -I minilibx/ libft/libft.a main.c src/utils.c src/rotate.c src/draw_map.c \
-	src/draw_line.c src/read_map.c src/addvalues.c -L minilibx/ -lmlx -framework OpenGl -framework AppKit -o fdf
+	src/draw_line.c src/read_map.c src/matrix_values.c \
+	-L minilibx/ -lmlx -framework OpenGl -framework AppKit -o fdf
 #src/draw_cols.c src/draw_rows.c 
 all:
 	$(CC)

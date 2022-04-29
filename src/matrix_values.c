@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:16:18 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 16:06:29 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/29 18:20:45 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ void	row(t_data *data, double *px, double *py, int i)
 	}
 	row_values(data, px, py, i);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:10:57 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 16:12:26 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/29 18:20:06 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	draw_map2(t_data *data)
 {
 	double	px[3];
 	double	py[3];
-	int	i;
+	int		i;
 
 	data->j = -1;
 	while (++data->j < data->map.rows)

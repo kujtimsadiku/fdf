@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:35:13 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 16:04:22 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/29 18:21:23 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_map(char *file_name, t_data *data, int rows, int cols)
 	{
 		if (rows == 0)
 		{
-			temp = ft_strsplit(line, ' '); //checkki !ok
+			temp = ft_strsplit(line, ' ');
 			while (temp[cols])
 				cols++;
 			ft_free_array((void **)temp, (size_t)cols);

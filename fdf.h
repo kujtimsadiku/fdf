@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
+/*   Updated: 2022/04/29 18:24:43 by ksadiku          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 
 # define FDF_H
@@ -41,7 +53,7 @@ typedef struct s_color
 
 }				t_color;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_mlx	arg;
 	t_map	map;
@@ -53,18 +65,16 @@ typedef struct	s_data
 	int		flows;
 	int		i;
 	int		j;
-	int 	d;
+	int		d;
 	int		trg;
 	double	pz[2];
 	double	rotate;
 }				t_data;
 
-
 void	read_map(char *file_name, t_data *data);
 void	draw_map2(t_data *data);
 void	draw_map(t_data *data);
 void	draw_line(t_data *data, double *px, double *py);
-
 
 void	init(t_data *data);
 void	col_values(t_data *data, double *px, double *py, int i);
@@ -78,6 +88,5 @@ int		rgb_color(double r, double g, double b);
 
 int		hot_keys(int key, t_data *data);
 int		mouse_hook(int key, t_data *data);
-
 
 #endif
