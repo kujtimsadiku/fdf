@@ -6,44 +6,27 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:10:49 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/28 16:02:24 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/29 15:46:55 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-/*-----sets hardcoded values-----*/
-
-/*----set the map correctly and rotates it----*/
-void	rotate(t_data *data, int *px, int *py, int *pz)
+/*
+	Rotate the map by calculating. With cos and sin we get the best results
+	while calculating the degrees we can rotate and make 360 degree.
+*/
+void	rotate(t_data *data, double *px, double *py, double *pz)
 {
-	int	x[3];
-	int	y[3];
-	int z[3];
+	double	x[3];
+	double	y[3];
 
 	x[0] = px[0];
 	x[1] = px[1];
 	y[0] = py[0];
 	y[1] = py[1];
-	px[0] = ((x[0] - y[0]) * data->rotate_x) / sqrt(data->geo);
-	py[0] = ((x[0] + ((data->rotate_x * y[0])) - (pz[0] * data->elev)) / sqrt(data->geo2));
-	px[1] = ((x[1] - y[1]) * data->rotate_y) / sqrt(data->geo);
-	py[1] = ((x[1] + ((data->rotate_y * y[1])) - (pz[1] * data->elev)) / sqrt(data->geo2));
-
-	
-	// y[0] = py[0];
-	// y[1] = py[1];
-	// x[0] = px[0];
-	// x[1] = px[1];
-	// z[0] = pz[0];
-	// z[1] = pz[1];
-	// px[0] = cos(y[0]) * x[0] + sin(y[0]) * z[0];
-	// py[0] = -sin(y[0]) * x[0] + cos(y[0]) * z[0];
-	// py[1] = cos(x[1]) * y[1] - sin(x[1]) * z[1];
-	// px[1] = sin(x[1]) * y[1] + cos(x[1]) * z[1];
+	px[0] = (x[0] - y[0]) * cos(data->rotate);
+	py[0] = (x[0] + y[0]) * sin(data->rotate) - (pz[0] * data->elev);
+	px[1] = (x[1] - y[1]) * cos(data->rotate);
+	py[1] = (x[1] + y[1]) * sin(data->rotate) - (pz[1] * data->elev);
 }
-
-// void	rotate2(t_data *data. int *px, int *py, int *pz)
-// {
-
-// }

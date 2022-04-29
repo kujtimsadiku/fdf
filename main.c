@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:51:42 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/28 16:03:00 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/29 18:10:56 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,47 @@ void	hot_keys2(int key, t_data *data)
 {
 	if (key == 126)
 		data->elev += 2;
-	if (key == 125)
+	else if (key == 125)
 		data->elev -= 2;
-	if (key == 24)
+	else if (key == 24)
 		data->gap += 1;
-	if (key == 27)
+	else if (key == 27)
 		data->gap -= 1;
-	if (key == 124)
+	else if (key == 124)
 		data->trg = 0;
-	if (key == 123)
+	else if (key == 123)
 		data->trg = 1;
-	if (key == 8)
-		data->color *= 2;
-	if (key == 1)
-		data->offset += 10;
-	if (key == 13)
-		data->offset -= 10;
-	if (key == 0)
+	else if (key == 7)
+		data->flows = 1;
+	else if (key == 6)
+		data->flows = 0;
+	else if (key == 8)
+	{
+		data->clr.b_color += rgb_color(0, 0, 0);
+		data->clr.elev_color += rgb_color(0.8, 0.2531, 0.2);
+		data->clr.color += rgb_color(0.6, 0.92331, 0.7);
+	}
+	else if (key == 1)
+		data->offset += 40;
+	else if (key == 13)
+		data->offset -= 40;
+	else if (key == 0)
 		data->d -= 20;
-	if (key == 2)
+	else if (key == 2)
 		data->d += 20;
-	if (key == 45)
-		data->geo += 1;
-	if (key == 46)
-		data->geo2 += 2;
-	if (key == 47)
-		data->geo -= 1;
-	if (key == 43)
-		data->geo2 -= 2;
-	if (key == 18)
+	else if (key == 18)
 	{
-		data->rotate_y += 1;
-		data->rotate_x += 1;
+		data->rotate += 0.1;
 		data->offset -= 1;
-		data->geo2 -= 1;
-		data->geo -= 1;
 	}
-	if (key == 19)
+	else if (key == 19)
 	{
-		data->geo2 += 1;
-		data->geo += 1;
-		data->offset -= 1;
-		data->rotate_x -= 1;
-		data->rotate_y -= 1;
+		data->rotate -= 0.1;
+		data->offset += 1;
 	}
-	if (key == 15)
+	else if (key == 15)
 		init(data);
-	mlx_clear_window(data->mlx, data->win);
+	mlx_clear_window(data->arg.mlx, data->arg.win);
 	draw_map(data);
 }
 
@@ -96,24 +90,22 @@ int	hot_keys(int key, t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int		i;
-	int		j;
 
 	if (argc != 2)
 		return (0);
 	init(&data);
 	read_map(argv[1], &data);
-	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, WIDTH, HEIGHT, "FDF Project");
+	data.arg.mlx = mlx_init();
+	data.arg.win = mlx_new_window(data.arg.mlx, WIDTH, HEIGHT, "FDF Project");
 	// draw_rows(&data);
 	// draw_cols(&data);
 	draw_map(&data);
-	// mlx_string_put(data.mlx, data.win, 1100, 720, 0xFFFFFF, "Keys Menu");
-	// mlx_string_put(data.mlx, data.win, 1100, 720, 0xFFFFFF, "left & right\
+	// mlx_string_put(data.arg.mlx, data.arg.win, 1100, 720, 0xFFFFFF, "Keys Menu");
+	// mlx_string_put(data.arg.mlx, data.arg.win, 1100, 720, 0xFFFFFF, "left & right\
 	//  	arrows: projection | +, - : size | up & down arrows: 3d elevation\
 	//  	| C: colors | esc: exit");
-	mlx_key_hook(data.win, &hot_keys, &data);
+	mlx_key_hook(data.arg.win, &hot_keys, &data);
 	// mlx_mouse_hook(data.win, &mouse_hook, &data);
-	mlx_loop(data.mlx);
+	mlx_loop(data.arg.mlx);
 	return (0);
 }
