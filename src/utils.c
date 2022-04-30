@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:27:32 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 18:21:36 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/30 13:00:43 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	set_color(t_data *data)
 	else if (data->flows)
 	{
 		if (data->pz[0] > data->pz[1] || data->pz[0] < data->pz[1])
-			data->clr.color = data->clr.b_color;
+			data->clr.color = rgb_color(0, 0, 0);
 		else if (data->pz[0] < data->pz[1] || data->pz[0] > data->pz[1])
-			data->clr.color = data->clr.b_color;
+			data->clr.color = rgb_color(0, 0, 0);
 		else
 			data->clr.color = data->clr.elev_color;
 	}
@@ -53,7 +53,7 @@ void	init(t_data *data)
 	data->offset = 50;
 	data->elev = 2;
 	data->clr.color = 0xFFFFFF;
-	data->trg = 1;
+	data->trg = 0;
 	data->rotate = 0.1;
 	data->d = 0;
 	data->flows = 0;

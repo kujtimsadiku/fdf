@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:10:57 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 18:20:06 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/30 13:22:17 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	draw_map(t_data *data)
 			draw_line(data, px, py);
 		}
 	}
+	put_string(data);
 	draw_map2(data);
 }

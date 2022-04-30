@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/29 18:24:43 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/04/30 13:14:09 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include "minilibx/mlx.h"
 
-# define WIDTH 1960
-# define HEIGHT 1260
+# define WIDTH 1280
+# define HEIGHT 960
 
 typedef struct s_mlx
 {
@@ -88,5 +88,7 @@ int		rgb_color(double r, double g, double b);
 
 int		hot_keys(int key, t_data *data);
 int		mouse_hook(int key, t_data *data);
+
+void	put_string(t_data *data);
 
 #endif
