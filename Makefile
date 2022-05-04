@@ -5,7 +5,7 @@ CC = arch -x86_64 cc -I minilibx/ libft/libft.a main.c src/utils.c src/rotate.c 
 all:
 	$(CC)
 clean:
-	rm fdf & rm -rf fdf.dSYM
+	rm fdf
 re:
 	$(CC)
 

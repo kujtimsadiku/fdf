@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/04/30 13:14:09 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/03 13:24:20 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include "minilibx/mlx.h"
 
-# define WIDTH 1280
-# define HEIGHT 960
+# define WIDTH 2400
+# define HEIGHT 1280
 
 typedef struct s_mlx
 {
