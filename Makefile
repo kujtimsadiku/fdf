@@ -1,39 +1,40 @@
-NAME = fdf
+NAME			=	fdf
 
-H_DIR = includes
-C_DIR = src
-O_DIR = obj
-DIR_LIST = $(H_DIR) $(C_DIR) $(O_DIR)
+H_FOLDER		=	includes
+C_FOLDER		=	src
+OBJ_FOLDER		=	obj
+FOLDER_LIST		=	$(H_FOLDER) $(C_FOLDER) $(OBJ_FOLDER)
 
-H_FILES = $(NAME).h
-C_FILES = main.c matrix_values.c rotate.c utils.c draw_line.c read_map.c \
-			key_hook.c put_string.c mouse_hook.c
-H_PATH = $(addprefix $(H_DIR)/, $(H_FILES))
-C_PATHS = $(addprefix $(C_DIR)/, $(C_FILES))
-OBJ_PATHS = $(addprefix $(O_DIR)/, $(patsubst %.c, %.o, $(C_FILES)))
+H_FILES			=	$(NAME).h
+C_FILES			=	matrix_values.c rotate.c utils.c draw_line.c read_map.c \
+					key_hook.c put_string.c mouse_hook.c main.c draw_map.c
+H_PATHS			=	$(addprefix $(H_FOLDER)/, $(H_FILES))
+C_PATHS			=	$(addprefix $(C_FOLDER)/, $(C_FILES))
+OBJ_PATHS		=	$(addprefix $(OBJ_FOLDER)/, $(patsubst %.c, %.o, $(C_FILES)))
 
-LIBFT = libft/libft.a
-LINKS = -lmlx -framework OpenGl -framework AppKit
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
+LINKS			:=	 -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGL -framework Appkit
+C_FLAGS			=	-Wall -Wextra -Werror
+LIBFT			=	libft/libft.a
+#C_FLAGS			+=	-g
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): pre_requisites $(OBJ_PATHS)
+$(NAME): pre_requisites $(OBJ_PATHS) Makefile
+
 	@touch pre_requisites
 	@make -C libft
-	$(CC) $(FLAGS) -I $(H_DIR) -o $@ $(OBJ_PATHS) $(LIBFT) $(LINKS)
+	cc $(C_FLAGS) -I $(H_FOLDER) -o $@ $(OBJ_PATHS) $(LIBFT) $(LINKS)
 
-$(OBJ_PATHS): $(O_DIR)/%.o:$(C_DIR)/%.c $(H_PATH)
-	$(CC) $(C_FLAGS) -I $(H_DIR) -c $< -o $@
+$(OBJ_PATHS): $(OBJ_FOLDER)/%.o:$(C_FOLDER)/%.c $(H_PATHS) Makefile
+	cc $(C_FLAGS) -I $(H_FOLDER) -c $< -o $@
 
-pre_requisites: $(DIR_LIST) $(H_PATHS) $(C_PATHS)
+pre_requisites: $(FOLDER_LIST) $(H_PATHS) $(C_PATHS)
 
-$(DIR_LIST):
+$(FOLDER_LIST):
 	mkdir $@
 
-$(H_PATH):
+$(H_PATHS):
 	touch $@
 
 $(C_PATHS):
@@ -50,7 +51,7 @@ print_files:
 .PHONY: clean
 clean:
 	-@rm -f $(OBJ_PATHS)
-	@make clean -C libft
+	-@make clean -C clean
 	@echo "All object files are removed!"
 
 .PHONY: fclean
