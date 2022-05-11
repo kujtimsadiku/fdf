@@ -6,7 +6,7 @@
 #    By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 11:18:00 by ksadiku           #+#    #+#              #
-#    Updated: 2022/03/03 13:14:30 by ksadiku          ###   ########.fr        #
+#    Updated: 2022/05/11 12:54:41 by ksadiku          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,33 +22,25 @@ ft_strsplit.c ft_itoa.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putendl.c\
 ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c\
 ft_replace_c.c ft_replace_word.c ft_intlen.c ft_isspace.c ft_realloc.c\
-get_next_line.c ft_free_array.c ft_free.c ft_strlenc.c
+get_next_line.c ft_free_array.c ft_free.c ft_strlenc.c ft_sqrt.c
 OBJ = $(SRC:.c=.o)
-CC = arch -x86_64 gcc
+CC = gcc
 FLAGS = -Wall -Wextra -Werror
-HEADER = includes/
-NOTNEED = *~
+HEADER = includes
 
 all: $(NAME)
 
 $(NAME):
-	@echo "Creating and linking the libft.a library file."
 	@$(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
-	@echo "\nLibrary is finished.\n"
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	@echo "Deleting OBJECT file (*.o) and all the files that includes --> ~\n"
 	@rm -f $(OBJ)
 	@rm -f $(NOTNEED)
-	@echo "Deleted!\n"
 
 
 fclean: clean
-	@echo "Deleting everything, including .a files\n"
 	@rm -f $(NAME)
-	@echo "Folder is clean now. To create and link the libft.a library file continue with Make\n"
 
 re: fclean all
 

@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 11:54:56 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:20 by ksadiku          ###   ########.fr       */
+/*   Created: 2021/10/28 11:07:43 by ksadiku           #+#    #+#             */
+/*   Updated: 2022/03/22 14:03:18 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free(void *arr, size_t len)
+double	ft_sqrt(double nb)
 {
-	if (!arr)
-		return ;
-	ft_bzero(arr, len);
-	free(arr);
+	double	sqrt;
+	double	temp;
+
+	sqrt = nb / 2;
+	temp = 0;
+	if (nb < 0)
+		return (0);
+	while (sqrt != temp)
+	{
+		temp = sqrt;
+		sqrt = (nb / temp + temp) / 2;
+	}
+	return (sqrt);
 }

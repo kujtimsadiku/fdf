@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/03 13:24:20 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/05 18:23:33 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,16 @@ typedef struct s_color
 
 }				t_color;
 
+typedef struct s_iso
+{
+	double alpha;
+	double beta;
+	double gamma;
+}				t_iso;
+
 typedef struct s_data
 {
+	t_iso	iso;
 	t_mlx	arg;
 	t_map	map;
 	t_pixls	pxls;
@@ -87,7 +95,8 @@ void	set_color(t_data *data);
 int		rgb_color(double r, double g, double b);
 
 int		hot_keys(int key, t_data *data);
-int		mouse_hook(int key, t_data *data);
+// int		mouse_hook(int key, int x, int y, t_data *data);
+int		mouse_hook(int key, int x, int y, void *param);
 
 void	put_string(t_data *data);
 
