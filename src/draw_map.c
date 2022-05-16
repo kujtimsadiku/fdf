@@ -6,13 +6,12 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:10:57 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/11 13:36:37 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/16 14:15:30 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*---------Values set for x and y----------*/
 void	row_values(t_data *data, double *px, double *py, int i)
 {
 	px[0] = data->offset + (i * data->gap);
@@ -20,10 +19,12 @@ void	row_values(t_data *data, double *px, double *py, int i)
 	py[0] = data->offset + (data->j * data->gap);
 	py[1] = data->offset + (data->j * data->gap);
 	if (data->trg)
-		rotate(data, px, py, data->pz);
+	{
+		projection(data, &px[0], &py[0], &data->pz[0]);
+		projection(data, &px[1], &py[1], &data->pz[1]);
+	}
 }
 
-/*-------------draws rows--------------*/
 void	draw_map2(t_data *data)
 {
 	double	px[3];
@@ -49,7 +50,10 @@ void	col_values(t_data *data, double *px, double *py, int i)
 	py[0] = data->offset + (data->j * data->gap);
 	py[1] = data->offset + (data->j * data->gap) + data->gap;
 	if (data->trg)
-		rotate(data, px, py, data->pz);
+	{
+		projection(data, &px[0], &py[0], &data->pz[0]);
+		projection(data, &px[1], &py[1], &data->pz[1]);
+	}
 }
 
 void	draw_map(t_data *data)

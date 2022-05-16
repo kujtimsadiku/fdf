@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 12:25:40 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/11 13:36:55 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:10:18 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ static void	additional_str(t_data *data)
 	mlx_string_put(data->arg.mlx, data->arg.win, 30, 270,
 		0xFFFFFF, "Z: untriggers the float");
 	mlx_string_put(data->arg.mlx, data->arg.win, 30, 290,
+		0xFFFFFF, "T: triggers DISCO!");
+	mlx_string_put(data->arg.mlx, data->arg.win, 30, 310,
+		0xFFFFFF, "Y: untriggers disco... :(");
+	mlx_string_put(data->arg.mlx, data->arg.win, 30, 330,
 		0xFFFFFF, "ESC: quits");
 }
 

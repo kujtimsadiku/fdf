@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:47:30 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/11 13:36:34 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/15 15:20:25 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,26 @@ static int	dont_draw(t_data *data)
 
 void	draw_line(t_data *data, double *px, double *py)
 {
-	// int start_y = py[0];
-	// int start_x = px[0];
-	data->pxls.deltaX = px[1] - px[0];
-	data->pxls.deltaY = py[1] - py[0];
-	data->pxls.pixels = sqrt((data->pxls.deltaX * data->pxls.deltaX)
-			+ (data->pxls.deltaY * data->pxls.deltaY));
-	data->pxls.deltaX /= data->pxls.pixels;
-	data->pxls.deltaY /= data->pxls.pixels;
-	data->pxls.pixelY = py[0];
-	data->pxls.pixelX = px[0];
-	set_color(data);
+	data->pxls.deltax = px[1] - px[0];
+	data->pxls.deltay = py[1] - py[0];
+	data->pxls.pixels = sqrt((data->pxls.deltax * data->pxls.deltax)
+			+ (data->pxls.deltay * data->pxls.deltay));
+	data->pxls.deltax /= data->pxls.pixels;
+	data->pxls.deltay /= data->pxls.pixels;
+	data->pxls.pixely = py[0];
+	data->pxls.pixelx = px[0];
+	set_color(data, px, py);
 	while (data->pxls.pixels)
 	{
-		set_color(data);
+		set_color(data, px, py);
 		if (data->flows)
 			if (dont_draw(data))
 				break ;
-		mlx_pixel_put(data->arg.mlx, data->arg.win, data->pxls.pixelX
-			+ (WIDTH / 2) + data->d, data->pxls.pixelY
+		mlx_pixel_put(data->arg.mlx, data->arg.win, data->pxls.pixelx
+			+ (WIDTH / 2) + data->dir, data->pxls.pixely
 			+ (HEIGHT / 4), data->clr.color);
-		data->pxls.pixelX += data->pxls.deltaX;
-		data->pxls.pixelY += data->pxls. deltaY;
+		data->pxls.pixelx += data->pxls.deltax;
+		data->pxls.pixely += data->pxls.deltay;
 		--data->pxls.pixels;
 	}
 }

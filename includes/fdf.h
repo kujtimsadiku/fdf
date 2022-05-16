@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/11 13:49:15 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:12:04 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 # define FDF_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
-# include "../minilibx/mlx.h"
+# include "mlx.h"
 
-# define WIDTH 2400
+# define WIDTH 1980
 # define HEIGHT 1280
 
 typedef struct s_mlx
@@ -38,10 +38,10 @@ typedef struct s_map
 
 typedef struct s_pixls
 {
-	double	deltaX;
-	double	deltaY;
-	double	pixelY;
-	double	pixelX;
+	double	deltax;
+	double	deltay;
+	double	pixely;
+	double	pixelx;
 	int		pixels;
 }				t_pixls;
 
@@ -49,20 +49,10 @@ typedef struct s_color
 {
 	int		color;
 	int		elev_color;
-	int		b_color;
-
 }				t_color;
-
-typedef struct s_iso
-{
-	double alpha;
-	double beta;
-	double gamma;
-}				t_iso;
 
 typedef struct s_data
 {
-	t_iso	iso;
 	t_mlx	arg;
 	t_map	map;
 	t_pixls	pxls;
@@ -73,8 +63,10 @@ typedef struct s_data
 	int		flows;
 	int		i;
 	int		j;
-	int		d;
+	int		dir;
 	int		trg;
+	int		disco;
+	int		previous_cols;
 	double	pz[2];
 	double	rotate;
 }				t_data;
@@ -89,15 +81,15 @@ void	col_values(t_data *data, double *px, double *py, int i);
 void	row_values(t_data *data, double *px, double *py, int i);
 void	col(t_data *data, double *px, double *py, int i);
 void	row(t_data *data, double *px, double *py, int i);
-void	rotate(t_data *data, double *px, double *py, double *pz);
+void	projection(t_data *data, double *px, double *py, double *pz);
 
-void	set_color(t_data *data);
+void	set_color(t_data *data, double *px, double *py);
 int		rgb_color(double r, double g, double b);
 
 int		hot_keys(int key, t_data *data);
-// int		mouse_hook(int key, int x, int y, t_data *data);
 int		mouse_hook(int key, int x, int y, void *param);
 
 void	put_string(t_data *data);
+void	errors(int error, char *message);
 
 #endif

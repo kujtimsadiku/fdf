@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:32:04 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/11 13:51:03 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:04:57 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,24 @@
 	the ones that are in parameters
 */
 
-// int	mouse_move(int x, int y, void *param)
-// {
-// 	t_data *fdf;
-// 	fdf = (t_data *)param;
-	
-// }
-
-int mouse_hook(int key, int x, int y, void *param)
+int	mouse_hook(int key, int x, int y, void *param)
 {
-	t_data *data;
+	t_data	*data;
+
 	data = (t_data *)param;
-	
-	(void)key;
-	(void)x;
 	(void)y;
+	(void)x;
 	if (key == 4)
-		data->gap += 10;
+	{
+		data->offset -= 30;
+		data->gap += 2;
+	}
 	else if (key == 5)
-		if (data->gap != 0)
-			data->gap -= 10;
+	{
+		data->offset += 30;
+		data->gap -= 2;
+	}
 	mlx_clear_window(data->arg.mlx, data->arg.win);
 	draw_map(data);
-	return 0;
+	return (0);
 }
