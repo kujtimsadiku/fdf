@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 12:17:52 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/16 15:04:23 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:46:31 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,9 @@
 static void	hot_keys4(int key, t_data *data)
 {
 	if (key == 1)
-	{
 		data->offset += 40;
-		data->dir -= 40;
-	}
 	else if (key == 13)
-	{
 		data->offset -= 40;
-		data->dir += 40;
-	}
 	else if (key == 17)
 		data->disco = 1;
 	else if (key == 16)
@@ -85,7 +79,6 @@ static void	hot_keys2(int key, t_data *data)
 	draw_map(data);
 }
 
-/*------ printf("%d\n", key); -------*/
 int	hot_keys(int key, t_data *data)
 {
 	if (key == 53)

@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:51:42 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/15 16:30:42 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:19:04 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 	data.arg.mlx = mlx_init();
 	data.arg.win = mlx_new_window(data.arg.mlx, WIDTH, HEIGHT, "FDF Project");
 	draw_map(&data);
-	mlx_hook(data.arg.win, 2, 0L, &hot_keys, &data);
-	mlx_hook(data.arg.win, 4, 0, mouse_hook, &data);
+	mlx_hook(data.arg.win, 2, 1L<<0, &hot_keys, &data);
+	mlx_hook(data.arg.win, 4, 0L, mouse_hook, &data);
 	mlx_loop(data.arg.mlx);
 	sleep(15);
 	return (0);

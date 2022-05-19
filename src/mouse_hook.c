@@ -6,18 +6,11 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 13:32:04 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/16 15:04:57 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:42:58 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*
-	that we can make the mouse_move work we need struct with the x, y and z cords
-	we then need to create the right size map on the terminal.
-	we need to know te previous x and y after that we give mouse x and y new ones
-	the ones that are in parameters
-*/
 
 int	mouse_hook(int key, int x, int y, void *param)
 {
@@ -28,13 +21,19 @@ int	mouse_hook(int key, int x, int y, void *param)
 	(void)x;
 	if (key == 4)
 	{
-		data->offset -= 30;
-		data->gap += 2;
+		ft_putstr("Mouse pressed: ");
+		ft_putnbr(key);
+		ft_putchar('\n');
+		data->offset -= 10;
+		data->gap -= 5;
 	}
 	else if (key == 5)
 	{
-		data->offset += 30;
-		data->gap -= 2;
+		ft_putstr("Mouse pressed: ");
+		ft_putnbr(key);
+		ft_putchar('\n');
+		data->offset += 10;
+		data->gap += 5;
 	}
 	mlx_clear_window(data->arg.mlx, data->arg.win);
 	draw_map(data);

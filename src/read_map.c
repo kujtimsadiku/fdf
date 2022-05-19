@@ -6,17 +6,33 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:35:13 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/16 12:22:08 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:52:51 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*---Not even cols----- rivi 20-21 & 26-30 kusee*/
+
+static int	is_number(char **nbr)
+{
+	int	i;
+
+	i = 0;
+	while (nbr[i])
+	{
+		if (!ft_isdigit(nbr[i][0]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	map_even(t_data *data, char *line, int cols, int rows)
 {
 	char	**temp;
 
 	temp = ft_strsplit(line, ' ');
+	if (!is_number(temp))
+		errors(1, "Invalid MAP_FILE");
 	while (temp[cols])
 		cols++;
 	ft_free_array((void **)temp, (size_t)cols);
@@ -33,16 +49,21 @@ static void	get_map(char *file_name, t_data *data, int rows)
 {
 	char	*line;
 	int		fd;
+	int		ret;
 
 	rows = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		errors(1, "Error!");
-	while (get_next_line(fd, &line))
+	ret = get_next_line(fd, &line);
+	while (ret)
 	{
+		if (ret < 0)
+			errors(1, "Error!");
 		map_even(data, line, 0, rows);
 		ft_free((void *)line, ft_strlen(line));
 		rows++;
+		ret = get_next_line(fd, &line);
 	}
 	data->map.rows = rows;
 	free(line);
