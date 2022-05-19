@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/19 14:42:49 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 15:39:19 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include "libft.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
 # include "mlx.h"
 
