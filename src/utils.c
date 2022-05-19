@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:27:32 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/16 15:01:39 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:12:43 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init(t_data *data)
 	data->offset = 50;
 	data->elev = 2;
 	data->clr.color = 0xFFFFFF;
-	data->trg = 0;
+	data->trigger = 0;
 	data->rotate = 0.1;
 	data->dir = 0;
 	data->flows = 0;

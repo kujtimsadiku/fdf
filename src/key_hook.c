@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 12:17:52 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/19 14:46:31 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:15:53 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,17 @@ static void	hot_keys2(int key, t_data *data)
 	else if (key == 125)
 		data->elev -= 2;
 	else if (key == 124)
-		data->trg = 0;
+	{
+		data->trigger -= 1;
+		if (data->trigger < 0)
+			data->trigger = 0;
+	}
 	else if (key == 123)
-		data->trg = 1;
+	{
+		data->trigger += 1;
+		if (data->trigger > 2)
+			data->trigger = 2;
+	}
 	else if (key == 7)
 		data->flows = 1;
 	else if (key == 6)

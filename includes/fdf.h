@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 18:24:43 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/19 15:39:19 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:12:34 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_data
 	int		i;
 	int		j;
 	int		dir;
-	int		trg;
+	int		trigger;
 	int		disco;
 	int		previous_cols;
 	double	pz[2];
@@ -80,7 +80,9 @@ void	col_values(t_data *data, double *px, double *py, int i);
 void	row_values(t_data *data, double *px, double *py, int i);
 void	col(t_data *data, double *px, double *py, int i);
 void	row(t_data *data, double *px, double *py, int i);
-void	projection(t_data *data, double *px, double *py, double *pz);
+
+void	projection1(t_data *data, double *px, double *py, double *pz);
+void	projection2(t_data *data, double *px, double *py, double *pz);
 
 void	set_color(t_data *data, double *px, double *py);
 int		rgb_color(double r, double g, double b);

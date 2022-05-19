@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:10:57 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/16 14:15:30 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:16:56 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@ void	row_values(t_data *data, double *px, double *py, int i)
 	px[1] = data->offset + (i * data->gap) + data->gap;
 	py[0] = data->offset + (data->j * data->gap);
 	py[1] = data->offset + (data->j * data->gap);
-	if (data->trg)
+	if (data->trigger == 1)
 	{
-		projection(data, &px[0], &py[0], &data->pz[0]);
-		projection(data, &px[1], &py[1], &data->pz[1]);
+		projection1(data, &px[0], &py[0], &data->pz[0]);
+		projection1(data, &px[1], &py[1], &data->pz[1]);
+	}
+	else if (data->trigger == 2)
+	{
+		projection2(data, &px[0], &py[0], &data->pz[0]);
+		projection2(data, &px[1], &py[1], &data->pz[1]);
 	}
 }
 
@@ -49,10 +54,15 @@ void	col_values(t_data *data, double *px, double *py, int i)
 	px[1] = data->offset + (i * data->gap);
 	py[0] = data->offset + (data->j * data->gap);
 	py[1] = data->offset + (data->j * data->gap) + data->gap;
-	if (data->trg)
+	if (data->trigger == 1)
 	{
-		projection(data, &px[0], &py[0], &data->pz[0]);
-		projection(data, &px[1], &py[1], &data->pz[1]);
+		projection1(data, &px[0], &py[0], &data->pz[0]);
+		projection1(data, &px[1], &py[1], &data->pz[1]);
+	}
+	if (data->trigger == 2)
+	{
+		projection2(data, &px[0], &py[0], &data->pz[0]);
+		projection2(data, &px[1], &py[1], &data->pz[1]);
 	}
 }
 
