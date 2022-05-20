@@ -6,7 +6,7 @@
 /*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 12:35:13 by ksadiku           #+#    #+#             */
-/*   Updated: 2022/05/19 14:52:51 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:23:21 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 static int	is_number(char **nbr)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	while (nbr[i])
 	{
-		if (!ft_isdigit(nbr[i][0]))
+		j = 0;
+		if (nbr[i][j] == '-')
+			j++;
+		if (!ft_isdigit(nbr[i][j]))
 			return (0);
 		i++;
 	}
@@ -83,7 +87,11 @@ static void	fill_the_map(int fd, int j, t_data *data)
 		errors(1, "Error!");
 	i = -1;
 	while (tmp[++i])
+	{
 		data->map.map[j][i] = ft_atoi(tmp[i]);
+		if (data->map.map[j][i] < -11000 && data->map.map[j][i] < 9000)
+			errors(1, "Map values too high or too low!");
+	}
 	ft_free_array((void **)tmp, (size_t)i);
 	ft_free((void *)line, ft_strlen(line));
 }

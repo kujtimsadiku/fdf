@@ -6,7 +6,7 @@
 #    By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 11:18:00 by ksadiku           #+#    #+#              #
-#    Updated: 2022/05/17 14:49:11 by ksadiku          ###   ########.fr        #
+#    Updated: 2022/05/20 13:24:18 by ksadiku          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ clean:
 .PHONY: fclean
 fclean: clean
 	-@rm -f $(NAME)
+	-@rm -df $(O_FOLDER)
 
 .PHONY: re
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksadiku <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ksadiku <ksadiku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 16:27:04 by ksadiku           #+#    #+#             */
-/*   Updated: 2021/11/22 14:23:21 by ksadiku          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:04:17 by ksadiku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		pdst[i] = psrc[i];
 		if (pdst[i] == (unsigned char)c)
-			return (&dst[i + 1]);
+			return (&((unsigned char *)dst)[i + 1]);
 		i++;
 	}
 	return (NULL);
